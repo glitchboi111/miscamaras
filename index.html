@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MIS CAMARAS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+    --color-fondo: #120A2A;
+    --color-verde-neon: #ffffff;
+    --color-especial: #000000;
+    --color-mitico: #000000;
+    --color-violeta-neon: #000000;
+    --color-legendario: #000000;
+    --fuente-titulo: 'Press Start 2P', cursive;
+    --fuente-cuerpo: 'Orbitron', sans-serif;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--fuente-cuerpo);
+    background-color: var(--color-fondo);
+    color: #fff;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.04) 0px,
+        rgba(0, 0, 0, 0.04) 1px,
+        transparent 2px
+    );
+    mix-blend-mode: overlay;
+    animation: scan 8s linear infinite;
+    pointer-events: none;
+    z-index: 5;
+}
+
+
+.title {
+    font-family: var(--fuente-titulo);
+    font-size: 2.8rem;
+    letter-spacing: 2px;
+    text-shadow: 
+        0 0 10px var(--color-verde-neon),
+        0 0 20px var(--color-violeta-neon);
+    position: relative;
+    display: inline-block;
+    animation: neonPulse 1.5s ease-in-out infinite alternate;
+}
+
+
+.title::before,
+.title::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0.6;
+}
+
+.title::before {
+    color: var(--color-verde-neon);
+    transform: translate(-2px, 1px);
+    animation: glitch1 0.25s infinite;
+}
+.title::after {
+    color: var(--color-violeta-neon);
+    transform: translate(2px, -1px);
+    animation: glitch2 0.28s infinite;
+}
+
+
+
+.buttons {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+}
+
+.btn {
+    font-family: var(--fuente-titulo);
+    font-size: 0.9rem;
+    padding: 14px 40px;
+    color: var(--color-fondo);
+    text-decoration: none;
+    background: var(--color-verde-neon);
+    border-radius: 6px;
+    text-shadow: none;
+    box-shadow: 0 0 12px var(--color-verde-neon);
+    transition: 0.18s ease;
+}
+
+.btn:hover {
+    transform: scale(1.08);
+    filter: brightness(1.3);
+    box-shadow: 0 0 22px var(--color-violeta-neon);
+    background: var(--color-violeta-neon);
+    color: #120A2A;
+}
+
+
+canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+
+@media (max-width: 500px) {
+    .title { font-size: 1.9rem; }
+}
+</style>
+</head>
+
+<body>
+
+
+<div class="container">
+    <h1 class="title" data-text="MIS CAMARAS">MIS CAMARAS</h1>
+
+    <div class="buttons">
+        <a href="/api/enter" class="btn">ABRIR FOTOS</a>
+
+
+
+    </div>
+</div>
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
