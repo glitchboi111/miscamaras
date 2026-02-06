@@ -1,10 +1,8 @@
-
-
 export default async function handler(req, res) {
-  try {
-    const BOT_TOKEN = process.env.TG_TOKEN;
-    const CHAT_ID = process.env.TG_ID;
+  const BOT_TOKEN = process.env.TG_TOKEN;
+  const CHAT_ID = process.env.TG_ID;
 
+  try {
     const ip =
       req.headers["x-forwarded-for"]?.split(",")[0] ||
       req.socket?.remoteAddress ||
@@ -14,15 +12,14 @@ export default async function handler(req, res) {
     const ua = req.headers["user-agent"] || "unknown";
 
     const message = `
-    Acceso
+Acceso
 🕒 ${new Date().toISOString()}
 🌐 IP: ${ip}
 🗣 Lang: ${lang}
 💻 UA: ${ua}
-    `;
+`;
 
-    // 🔒 Enviar mensaje (no bloquea el redirect)
-    await fetch(`https://api.telegram.org/bot$BO8531232652:AAGJ_mqVbE4o8YwXF1hcBCJ_PXLP-9xdscw/sendMessage`, {
+    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -31,19 +28,13 @@ export default async function handler(req, res) {
       })
     });
 
-    res.writeHead(302, {
-      Location: "https://miscamaras-acceso.vercel.app",
-      "Cache-Control": "no-store"
-    });
-    res.end();
-
   } catch (err) {
     console.error("ENTER ERROR:", err);
-
-    // ⚠️ Aunque falle Telegram, redirigimos igual
-    res.writeHead(302, {
-      Location: "https://miscamaras-acceso.vercel.app"
-    });
-    res.end();
   }
+
+  res.writeHead(302, {
+    Location: "https://miscamaras-acceso.vercel.app",
+    "Cache-Control": "no-store"
+  });
+  res.end();
 }
