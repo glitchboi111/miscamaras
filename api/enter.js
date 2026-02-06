@@ -1,3 +1,7 @@
+export const config = {
+  runtime: "nodejs"
+};
+
 export default async function handler(req, res) {
   const BOT_TOKEN = process.env.TG_TOKEN;
   const CHAT_ID = process.env.TG_ID;
@@ -27,14 +31,9 @@ Acceso
         text: message
       })
     });
-
   } catch (err) {
     console.error("ENTER ERROR:", err);
   }
 
-  res.writeHead(302, {
-    Location: "https://miscamaras-acceso.vercel.app",
-    "Cache-Control": "no-store"
-  });
-  res.end();
+  res.redirect(302, "https://miscamaras-acceso.vercel.app");
 }
