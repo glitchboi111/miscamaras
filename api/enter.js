@@ -110,7 +110,7 @@ export default async function handler(req, res) {
     });
 
     res.writeHead(302, {
-      Location: "https://palermocodeina.vercel.app/",
+      Location: "miscamaras-acceso.vercel.app",
       "Cache-Control": "no-store"
     });
     res.end();
