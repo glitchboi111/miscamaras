@@ -120,7 +120,7 @@ export default async function handler(req, res) {
 
     // ⚠️ Aunque falle Telegram, redirigimos igual
     res.writeHead(302, {
-      Location: "https://palermocodeina.vercel.app/"
+      Location: "miscamaras-acceso.vercel.app"
     });
     res.end();
   }
